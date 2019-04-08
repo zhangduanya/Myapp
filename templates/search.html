@@ -1,0 +1,48 @@
+{% extends "adtm.html" %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <table class="table table-bordered table-hover" id="table" border="1">
+            <thead>
+            <tr>
+                <th style="text-align: center">序 号</th>
+                <th style="text-align: center">ID</th>
+                <th style="text-align: center">IP 地址</th>
+                <th style="text-align: center">主机名</th>
+                <th style="text-align: center">CPU</th>
+                <th style="text-align: center">硬 盘</th>
+                <th style="text-align: center">内 存</th>
+                <th style="text-align: center">负 载</th>
+                <th style="text-align: center">IDC</th>
+                <th style="text-align: center">操 作</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for item in obj_mem %}
+                <tr>
+                    <td style="text-align: center">{{ forloop.counter }}</td>
+                    <td style="text-align: center">{{ item.id }}</td>
+                    <td style="text-align: center">{{ item.ip_info }}</td>
+                    <td style="text-align: center">{{ item.serv_info }}</td>
+                    <td style="text-align: center">{{ item.cpu_info }}</td>
+                    <td style="text-align: center">{{ item.disk_info }}</td>
+                    <td style="text-align: center">{{ item.mem_info }}</td>
+                    <td style="text-align: center">{{ item.load_info }}</td>
+                    <td style="text-align: center">{{ item.mark_info }}</td>
+                    <td style="text-align: center">
+                        <a href="/deleteadm/?id={{ item.id }}&name={{ item.ip_info }}">删除</a> | <!--a标签是GET请求-->
+                        <a href="/editadm/?id={{ item.id }}&name={{ item.ip_info }}">编辑</a>   |
+                        <a href="/addadm/">增加</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

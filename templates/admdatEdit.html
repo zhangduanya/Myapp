@@ -1,0 +1,59 @@
+{% extends "adtm.html" %}
+
+{% block content %}
+    <div>
+        <h3>AdmDat更新页面 💬：</h3>
+        <br>
+        <form class="form-inline" method="post" action="/editadm/">
+            <div class="form-group">
+                <label for="exampleInputEmail2">id：</label><input type="text" class="form-control" value="{{ new_id1 }}"
+                                                                  name="id">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">ip_info：</label><input type="text" class="form-control"
+                                                                       value="{{ ip_info }}" name="ip">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">serv_info：</label><input type="text" class="form-control"
+                                                                         value="{{ serv_info }}" name="serv">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">cpu_info：</label><input type="text" class="form-control"
+                                                                        value="{{ cpu_info }}" name="cpu">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">disk_info：</label><input type="text" class="form-control"
+                                                                         value="{{ disk_info }}" name="disk">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">mem_info：</label><input type="text" class="form-control"
+                                                                        value="{{ mem_info }}" name="mem">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">load_info：</label><input type="text" class="form-control"
+                                                                         value="{{ load_info }}" name="load">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">idc_info：</label><input type="text" class="form-control"
+                                                                        value="{{ mark_info }}" name="idc">
+            </div>
+            <span style="color:red;">{{ error }}</span>
+            <button type="submit" class="btn btn-default">更 新</button>
+        </form>
+    </div>
+
+    <style>
+        label {
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+    </style>
+{% endblock %}

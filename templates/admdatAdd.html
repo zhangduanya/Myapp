@@ -1,0 +1,64 @@
+{% extends "adtm.html" %}
+
+{% block content %}
+
+
+    <style>
+    label {  width:100px; float:left; text-align:right; }
+    </style>
+
+    <div>
+        <h3>AdmData增加数据页面 💬：</h3>
+        <br>
+{#        <table class="table">#}
+{#            <form method="POST" action="/editadm/">#}
+{#                <p>id：<input type="text" value="{{ AdmDat.id }}" name="id" placeholder="必须填写"/></p>#}
+{#                <p>ip_info：<input type="text" value="{{ AdmDat.ip_info }}" name="ip" placeholder="192.168.1.xx"/></p>#}
+{#                <p>serv_info：<input type="text" value="{{ AdmDat.serv_info }}" name="serv"#}
+{#                                    placeholder="localhost.localdomain"/></p>#}
+{#                <p>cpu_info：<input type="text" value="{{ AdmDat.cpu_info }}" name="cpu" placeholder="intel"/></p>#}
+{#                <p>disk_info：<input type="text" value="{{ AdmDat.disk_info }}" name="disk" placeholder="/data/ 600G"/>#}
+{#                </p>#}
+{#                <p>mem_info：<input type="text" value="{{ AdmDat.mem_info }}" name="mem" placeholder="16G"/></p>#}
+{#                <p>load_info：<input type="text" value="{{ AdmDat.load_info }}" name="load" placeholder="6.66"/></p>#}
+{#                <p>idc_info：<input type="text" value="{{ AdmDat.mark_info }}" name="mark" placeholder="BEIJING_IDC"/></p>#}
+{#                <input type="submit" value="增 加"/>#}
+{#            </form>#}
+{#        </table>#}
+        <form class="form-inline" method="post">
+{#            <div class="form-group">#}
+{#                <label for="exampleInputName2">id：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="必须填写一个不存在的ID" name="id">#}
+{#            </div>#}
+{#            <br>#}
+            <div class="form-group">
+                <label for="exampleInputEmail2">ip_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="192.168.xx.xx" name="ip">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">serv_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="localhost.localdomain" name="serv">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">cpu_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="Inter" name="cpu">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">disk_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="/data/ 600G" name="disk">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">mem_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="16G" name="mem">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">load_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="6.66" name="load">
+            </div>
+               <br>
+            <div class="form-group">
+                <label for="exampleInputEmail2">idc_info：</label><input type="text" class="form-control" id="exampleInputName2" placeholder="BEIJING_IDC" name="idc">
+            </div>
+            <span style="color:red;">{{ error }}</span>
+            <button type="submit" class="btn btn-default">增 加</button>
+        </form>
+    </div>
+{% endblock %}

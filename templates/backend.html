@@ -1,0 +1,98 @@
+{% extends "main.html" %}
+{% load staticfiles %}
+{#{% block css %}#}
+{#<link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">#}
+{#{% endblock %}#}
+
+{% block content %}
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Table With Full Features</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>序 号</th>
+                                    <th>ID</th>
+                                    <th>IP 地址</th>
+                                    <th>主机名</th>
+                                    <th>CPU</th>
+                                    <th>硬 盘</th>
+                                    <th>内 存</th>
+                                    <th>负 载</th>
+                                    <th>IDC</th>
+                                    <th>操 作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in obj_list %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.ip_info }}</td>
+                                        <td>{{ item.serv_info }}</td>
+                                        <td>{{ item.cpu_info }}</td>
+                                        <td>{{ item.disk_info }}</td>
+                                        <td><a href="/search/?mem={{ item.mem_info }}">{{ item.mem_info }}</a></td>
+                                        <td>{{ item.load_info }}</td>
+                                        <td>{{ item.mark_info }}</td>
+                                        <td><a href="/deleteadm/?id={{ item.id }}&name={{ item.ip_info }}">删除</a> |
+                                            <!--a标签是GET请求-->
+                                            <a href="/editadm/?id={{ item.id }}&name={{ item.ip_info }}">编辑</a> |
+                                            <a href="/addadm/">增加</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <nav aria-label="..." style="text-align: center">
+                                <ul class="pagination">
+
+                                    {% if obj_list.has_previous %}
+                                        <li class="previous"><a href="/fenye/?page={{ obj_list.previous_page_number }}">上一页</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="previous disabled"><a href="#">上一页</a></li>
+                                    {% endif %}
+
+
+                                    {% for num in page_range %}
+                                        {% if num == currentPage %}
+                                            <li class="item active"><a href="/fenye/?page={{ num }}">{{ num }}</a></li>
+                                        {% else %}
+                                            {% if num == '...' %}
+                                                {# 取消当前页为'...'的链接功能#}
+                                                <li><span>{{ num }}</span></li>
+                                            {% else %}
+                                                <li class="item"><a href="/fenye/?page={{ num }}">{{ num }}</a></li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+
+
+                                    {% if obj_list.has_next %}
+                                        <li class="next"><a href="/fenye/?page={{ obj_list.next_page_number }}">下一页</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="next disabled"><a href="#">下一页</a></li>
+                                    {% endif %}
+                                </ul>
+                                <p>
+                                    共有{{ obj_list.paginator.count }}条数据，当前第{{ obj_list.number }}页，共{{ obj_list.paginator.num_pages }}页 </p>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </section>
+{% endblock %}
